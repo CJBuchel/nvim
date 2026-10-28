@@ -1,0 +1,10 @@
+# Google C++ style, used for everything that is not a ROS 2 package and has no
+# .clang-format of its own. Attached braces (1TBS), 2-space indent, left-aligned
+# pointers. Only deviation from stock Google: 100 columns instead of 80.
+---
+Language: Cpp
+BasedOnStyle: Google
+
+ColumnLimit: 100
+DerivePointerAlignment: false
+PointerAlignment: Left

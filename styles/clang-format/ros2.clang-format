@@ -1,9 +1,10 @@
+# ROS 2 C++ style (ament_clang_format), used automatically for files inside a
+# ROS 2 package that has no .clang-format of its own.
 ---
 Language: Cpp
 BasedOnStyle: Google
 
 AccessModifierOffset: -2
-# AlignAfterOpenBracket: BlockIndent
 AlignAfterOpenBracket: AlwaysBreak
 BreakBeforeBraces: Custom
 BraceWrapping:
@@ -35,6 +36,6 @@ AlignOperands: true
 BreakBeforeTernaryOperators: false
 SpaceAfterTemplateKeyword: true
 
-# Editor-side addition: never reorder includes (include order matters in some
-# packages, e.g. the fmt workaround in platform_health), and it avoids noisy diffs.
+# Editor-side addition: never reorder includes. Include order matters in some
+# packages (e.g. the fmt workaround in platform_health) and it avoids noisy diffs.
 SortIncludes: Never

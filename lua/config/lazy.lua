@@ -1,3 +1,5 @@
+-- Bootstrap lazy.nvim, then load LazyVim and the plugin specs under lua/plugins.
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -16,33 +18,27 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    -- add LazyVim and import its plugins
+    -- LazyVim and the extras listed in lazyvim.json
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- import/override with your plugins
+    -- Our overrides. lazy.nvim imports are not recursive, so each directory is listed.
     { import = "plugins" },
+    { import = "plugins.lang" },
   },
   defaults = {
-    -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
-    -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
+    -- Load our own plugins at startup; LazyVim's are lazy-loaded.
     lazy = false,
-    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
-    -- have outdated releases, which may break your Neovim install.
-    version = false, -- always use the latest git commit
-    -- version = "*", -- try installing the latest stable version for plugins that support semver
+    -- Track git HEAD rather than tagged releases; many plugins tag rarely and
+    -- stale tags break more often than HEAD. lazy-lock.json pins the commits.
+    version = false,
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
-  checker = {
-    enabled = true, -- check for plugin updates periodically
-    notify = false, -- notify on update
-  }, -- automatically check for plugin updates
+  install = { colorscheme = { "cyberdream", "habamax" } },
+  -- No background update checks: updates are done on purpose with :Lazy update
+  -- and then committed via lazy-lock.json (see README "Updating").
+  checker = { enabled = false },
   performance = {
     rtp = {
-      -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
-        -- "matchit",
-        -- "matchparen",
-        -- "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
