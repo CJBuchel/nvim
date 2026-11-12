@@ -73,6 +73,7 @@ lua/
       cpp.lua             clang-format, style-aware
       python.lua          pyright with pixi, black/isort or ruff by style
       java.lua            google-java-format
+      docker.lua          dockerls leaves multi-line instructions alone
 ```
 
 Rust, TypeScript/JavaScript, CMake, YAML, JSON, TOML, Docker and Markdown need
